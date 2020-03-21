@@ -1,9 +1,11 @@
 version: 2.1
 
+orbs:
+  python: circleci/python@3.1.4
+
 jobs:
-  build:
-    docker:
-      -image: circleci/python:3.7
+  build-and-test:
+    executor: python/default
 
     working_directory: ~/repo 
 
@@ -22,3 +24,7 @@ jobs:
             flake8 --exclude=venv* --statistics
             pytest -v --cov=calculator
 
+workflows:
+  main:
+    jobs:
+      - build-and-test
