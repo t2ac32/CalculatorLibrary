@@ -2,10 +2,7 @@ version: 2.1
 jobs:
   build:
     executor: python/default
-
     working_directory: ~/repo 
-    
-    executor: python/default
     
     steps:
       - checkout
